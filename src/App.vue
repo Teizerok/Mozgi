@@ -1,30 +1,73 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div @mousemove="mouseMoving" class="wrapper">
+    <div class="container">
+      <header-section class="container__header" />
+      <router-view
+        :mouseX="mouseX"
+        :mouseY="mouseY"
+        class="container__content"
+      />
+    </div>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import headerSection from "./components/headerSection.vue";
+export default {
+  components: {
+    headerSection,
+  },
+
+  data: () => {
+    return {
+      mouseX: 0,
+      mouseY: 0,
+    };
+  },
+
+  methods: {
+    mouseMoving({ screenY, screenX }) {
+      this.mouseX = screenX;
+      this.mouseY = screenY;
+    },
+  },
+};
+</script>
+
+<style lang="scss" >
+@import "./assets/style/nullStyle.scss";
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100;200;300;400;500;600;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@400;900&display=swap");
+
+body {
+  min-height: 100%;
+  height: 100%;
 }
 
-nav {
-  padding: 30px;
+#app {
+  min-height: 100%;
+  height: 100%;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: #bebebe;
+  overflow: hidden;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.container {
+  height: 100%;
+  width: 98%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.container__header {
+  flex: 0 0 auto;
+}
+
+.container__content {
+  flex: 1 1 auto;
 }
 </style>

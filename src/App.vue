@@ -8,14 +8,17 @@
         class="container__content"
       />
     </div>
+    <line-strick />
   </div>
 </template>
 
 <script>
 import headerSection from "./components/headerSection.vue";
+import lineStrick from "./components/lineStrick.vue";
 export default {
   components: {
     headerSection,
+    lineStrick,
   },
 
   data: () => {
@@ -53,12 +56,10 @@ body {
   height: 100%;
   background: #bebebe;
   overflow: hidden;
+  position: relative;
 }
 
 .container {
-  height: 100%;
-  width: 98%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }

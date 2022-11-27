@@ -45,7 +45,18 @@
   }
 
   & svg:hover {
-    transform: rotate(-500deg);
+    animation-name: circle;
+    animation-duration: 45s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
   }
 }
 </style>

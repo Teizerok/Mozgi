@@ -1,38 +1,44 @@
 <template>
   <div class="main">
-    <main class="content">
-      <div class="content__button_left">
-        <router-link to="where" class="content__button_link"
-          >where?</router-link
-        >
-      </div>
-      <div class="content__body">
-        <div class="content__title">
-          <h2
-            :style="{
-              top: `${calculateBias(mouseY)}%`,
-              left: `${calculateBias(mouseX)}%`,
-            }"
+    <div class="main__container">
+      <main class="content">
+        <div class="content__button_left">
+          <router-link to="where" class="content__button_link"
+            >where?</router-link
           >
-            FULL-CYCLE EVENT AGENCY
-          </h2>
         </div>
-        <circle-showreel />
-      </div>
-      <div class="content__button_right">
-        <router-link to="what" class="content__button_link">what?</router-link>
-      </div>
-    </main>
-    <footer class="footer">
-      <div class="footer__button">
-        <router-link to="who" class="footer__button_link">Who?</router-link>
-      </div>
-    </footer>
+        <div class="content__body">
+          <div class="content__title">
+            <h2
+              :style="{
+                top: `${calculateBias(mouseY)}%`,
+                left: `${calculateBias(mouseX)}%`,
+              }"
+            >
+              FULL-CYCLE EVENT AGENCY
+            </h2>
+          </div>
+          <circle-showreel />
+        </div>
+        <div class="content__button_right">
+          <router-link to="what" class="content__button_link"
+            >what?</router-link
+          >
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="footer__button">
+          <router-link to="who" class="footer__button_link">Who?</router-link>
+        </div>
+      </footer>
+    </div>
   </div>
+  <preloder-page name="mozgi" />
 </template>
 
 <script>
 import circleShowreel from "../components/circleShowreel.vue";
+import preloderPage from "../components/preloderPage.vue";
 export default {
   props: {
     mouseX: {
@@ -49,6 +55,7 @@ export default {
 
   components: {
     circleShowreel,
+    preloderPage,
   },
 
   methods: {
@@ -61,6 +68,11 @@ export default {
 
 <style scoped lang='scss'>
 .main {
+  width: 98%;
+  margin: 0 auto;
+}
+
+.main__container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -71,6 +83,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding: 200px 0 0 0;
+  margin: 0 0 50px 0;
 }
 
 .content__body {
@@ -82,7 +97,6 @@ export default {
   height: 180px;
   margin: 0 auto 50px;
   position: relative;
-  padding: 100px 0 0 0;
 
   @media (max-width: 877px) {
     margin: 0 0 100px 0;
@@ -144,7 +158,7 @@ export default {
       position: absolute;
       width: 500px;
       height: 500px;
-      top: -65%;
+      top: -85%;
       left: 23%;
       z-index: -1;
       border-radius: 50%;
